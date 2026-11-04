@@ -66,7 +66,7 @@ const showProfiles = (profiles) => {
     });
   });
 
-    const playButtons = document.querySelectorAll('.play-btn');
+  const playButtons = document.querySelectorAll('.play-btn');
   playButtons.forEach((button) => {
     button.addEventListener('click', () => {
       saveCurrentPlayerId(button.dataset.id);
@@ -109,13 +109,23 @@ profileForm.addEventListener('submit', (event) => {
   }
 
   let updated;
-  if (id) {
-    updated = updateProfile(profiles, id, nickname, avatar);
-  } else {
-    updated = [...profiles, createProfile(nickname, avatar)];
-  }
+  if (id) {updated = updateProfile(profiles, id, nickname, avatar);}
+  else {updated = [...profiles, createProfile(nickname, avatar)]}
 
   saveProfiles(updated);
   showProfiles(updated);
   resetForm();
 });
+//partie-2
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('nav-profile').addEventListener('click', () => {
+  showSection('section-profile')})
+document.getElementById('nav-profiles').addEventListener('click', () => {
+  const activePlayerId = getActivePlayerId();
+  if (!activePlayerId) {
+    alert("veuillez sélectionner un profil avant de jouer.");
+    showSection('section-profile');
+    return
+  }
+  showSection('section-game')
+})})

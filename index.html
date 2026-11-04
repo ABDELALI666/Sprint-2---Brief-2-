@@ -8,12 +8,17 @@
 </head>
 <body class="min-h-screen flex flex-col bg-gray-100 text-gray-800">
 <header class="bg-slate-800 text-white p-4 flex text-center text-xl font-bold justify-between">
-  <h1 class="text-lg font-bold text-blue-600">Jeu de Cartes</h1>
-  <h2 class="font-bold ">bienvenue</h2>
+  <h1 class="text-lg font-bold text-blue-600 items-center">Jeu de Cartes</h1>
+  <nav class=" flex gap-16 items-center">
+  <button id="nav-profiles" class="text-sm font-bold text-amber-600 hover:text-amber-200">Profiles</button>
+  <button id="nav-game" class="text-sm font-bold text-amber-600 hover:text-amber-200">jouer</button>
+  <button id="nav-history" class="text-sm font-bold text-amber-600 hover:text-amber-200">Historique</button>
+  </nav>
   <div class="text-sm">  Joueur: <span id="active-player-name" class="font-bold text-green-600">Aucun</span>
   </div>
 </header>
-  <main class="flex-grow p-4 items-center">
+<main class="flex-grow p-4 items-center">
+<section id="section-profile" >
     <h2 id="form-title" class="text-2xl font-bold mb-4 border-b pb-2 text-center">Créer un Profil</h2>
     <form id="profile-form" class="flex flex-col gap-4 shadow-md p-4 max-w-sm mx-auto">
       <input type="hidden" id="player-id" value="">
@@ -26,7 +31,6 @@
           placeholder="Ex: Yanis_07" 
           required>
       </div>
-
       <div class="mb-3">
         <label for="avatar" class="block text-sm font-semibold mb-1"> Avatar</label>
         <select id="avatar" class="w-full border border-gray-300 p-2 rounded">
@@ -48,11 +52,46 @@
     <h2 class="text-lg font-bold mb-3 border-b pb-2 text-center">Liste des Profils</h2>
     <div id="players-list" class="space-y-3">
     </div>
-  </main>
-  <footer class="bg-slate-800 text-white p-4 text-center text-sm">
-    &copy; 2026-2027 Jeu de Cartes. Tous droits réservés.
-  </footer>
+</section>
+<section id="section-game" class="bg-white p-5 rounded shadow-md border border-gray-200 hidden"> ">
+      <div class="bg-slate-800 text-white p-3 rounded mb-4 text-xs font-semibold space-y-1">
+        <div class="flex justify-between">
+          <span>Manche: <strong id="game-manche" class="text-amber-400">1/12</strong></span>
+          <span>Groupe: <strong id="game-groupe" class="text-amber-400">1/4</strong></span>
+        </div>
+        <div class="flex justify-between border-t border-slate-700 pt-1">
+          <span>Camp: <strong id="game-camp" class="text-blue-400">Empereur</strong></span>
+          <span>Premier: <strong id="game-first-turn" class="text-purple-400">Empereur</strong></span>
+        </div>
+        <div class="flex justify-between border-t border-slate-700 pt-1 text-sm font-bold">
+          <span class="text-green-400">Score Joueur: <span id="player-score">0</span></span>
+          <span class="text-red-400">Score Ordi: <span id="computer-score">0</span></span>
+        </div>
+      </div>
 
-  <script type="module" src="./src/main.js"></script>
+      <div class="mb-4 text-center">
+        <p class="text-xs font-bold text-gray-500 mb-2">Cartes Ordinateur</p>
+        <div id="computer-hand" class="flex justify-center gap-2 min-h-[60px]"></div>
+      </div>
+
+      <div class="my-4 p-4 border-2 border-dashed border-gray-300 rounded text-center bg-gray-50">
+        <div id="duel-arena" class="flex justify-center items-center gap-4 min-h-[80px]">
+          <div id="card-played-computer" class="w-12 h-16 border rounded bg-gray-200 flex items-center justify-center text-xs font-bold text-gray-400">Ordi</div>
+          <span class="font-bold text-gray-400">VS</span>
+          <div id="card-played-player" class="w-12 h-16 border rounded bg-gray-200 flex items-center justify-center text-xs font-bold text-gray-400">Vous</div>
+        </div>
+        <p id="duel-result-message" class="text-sm font-bold mt-2 text-blue-600 min-h-[20px]"></p>
+      </div>
+
+      <div class="text-center">
+        <p class="text-xs font-bold text-gray-500 mb-2">Vos Cartes</p>
+        <div id="player-hand" class="flex justify-center gap-2 min-h-[60px]"></div>
+      </div>
+    </section>
+</main>
+<footer class="bg-slate-800 text-white p-4 text-center text-sm">
+    &copy; 2026-2027 Jeu de Cartes. Tous droits réservés.
+</footer>
+<script type="module" src="./src/main.js"></script>
 </body>
 </html>

@@ -35,4 +35,22 @@ export const renderProfiles = (profiles) => {
         </div>
       </div>`;
   });
-};
+}
+export function showsection(sectionName) {
+  const sections = {
+    profiles : document.getElementById('section-profiles'),
+    game : document.getElementById('section-game'),
+    history : document.getElementById('section-history')
+  }
+  const button = {
+    profiles : document.getElementById('nav-profiles'),
+    game : document.getElementById('nav-game'),
+    history : document.getElementById('nav-history')
+  }
+object.keys(sections).forEach((key) => {
+    if (key === sectionName) {
+      sections[key].classList.remove('hidden');
+    }else{
+      section[key].classList.add('hidden')
+    }
+  })}
